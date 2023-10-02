@@ -1,0 +1,55 @@
+<!--  <div class="container mt-5">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-header"> Authentification</div>
+      <div class="text-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+      <div class="card-body">
+        <form [formGroup]="userFormGroup" (ngSubmit)="handleLogin()">
+          <div class="mb-3">
+            <label class="form-label"> Username</label>
+            <input type="text" formControlName="username" class="form-control"/>
+          </div>
+          <div class="mb-3">
+            <label class="form-label"> Password</label>
+            <input type="password" formControlName="password" class="form-control"/>
+          </div>
+          <button class="btn btn-primary" type="submit"> Login</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<section class="vh-50 gradient-custom">
+  <div class="container py-5 h-25">
+    <div class="row d-flex justify-content-center align-items-center h-80">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2>Login</h2>
+
+              <form [formGroup]="userFormGroup" (ngSubmit)="handleLogin()">
+                <div class="mb-3">
+                  <label class="form-label"> Username</label>
+                  <input type="text" formControlName="username" class="form-control"/>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label"> Password</label>
+                  <input type="password" formControlName="password" class="form-control"/>
+                </div>
+                <button class="btn btn-primary" type="submit"> Login</button>
+
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
