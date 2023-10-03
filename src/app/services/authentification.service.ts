@@ -32,10 +32,16 @@ export class AuthentificationService {
     public hasRole(role :string):boolean{
       return this.authenticatedUser!.roles.includes(role);
     }
-    public isAuthenticated() {
-      console.log(this.authenticatedUser);
-      return this.authenticatedUser!=undefined;
-    }
+  public isAuthenticated() {
+    let auth = localStorage.getItem("authUser"); // test if the auth user exist in localStoarge
+    if(auth) this.authenticatedUser = JSON.parse(auth); // (optional) convert it to JSON and return it value into authenticatedUser to stock the state of auth
+    return auth!=undefined; // test if auth is good we return true else return false
+  }
+
+   // public isAuthenticated() {
+     // console.log(this.authenticatedUser);
+      //return this.authenticatedUser!=undefined;
+   // }
     public logout():Observable<boolean> {
       this.authenticatedUser=undefined;
       localStorage.removeItem("authUser");
