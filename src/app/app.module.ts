@@ -8,7 +8,7 @@ import { CustomersComponent } from './customers/customers.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
 import { AdminTemplateComponent } from './admin-template/admin-template.component';
-import { ImageProductsComponent } from './image-products/image-products.component';
+import { AdminProductImageComponent } from './admin-product-image/admin-product-image.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { ImageProductsComponent } from './image-products/image-products.componen
     CustomersComponent,
     LoginComponent,
     AdminTemplateComponent,
-    ImageProductsComponent
+    AdminProductImageComponent
   ],
   imports: [
     BrowserModule,
