@@ -1,210 +1,89 @@
 
-<section style="background-color: #eee;">
-  <div class="container py-5">
-    <div class="row">
-      <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Ajouter un Produit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form class="row g-4">
+        <div class="col-md-5">
+          <label for="avatar">Choose a profile picture:</label>
+          <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" required/>
+        </div>
+        <div class="col-md-5">
+          <label for="validationServer01" class="form-label">Product Name</label>
+          <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-5">
+          <label for="validationServer02" class="form-label">Description</label>
+          <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-5">
+          <label for="validationServerUsername" class="form-label">Price</label>
+          <div>
+            <input type="text" class="form-control" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+            <div>
+              Please choose a price
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Ajouter un Produit</a>
+
+<section  style="background-color: #eee;">
+  <div  class="container py-5">
+    <div  class="row">
+      <div *ngFor="let produit of products; index as i; first as isFirst" class="col-md-12 col-lg-4 mb-4 mb-lg-0">
         <div class="card">
           <div class="d-flex justify-content-between p-3">
-            <p class="lead mb-0">Today's Combo Offer</p>
+            <p class="lead mb-0">{{produit.name}}</p>
             <div
               class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
               style="width: 35px; height: 35px;">
               <p class="text-white mb-0 small">x4</p>
             </div>
           </div>
-          <img src="assets\img\tanji.jpg"
-               class="card-img-top" alt="Laptop" />
+          <img src="{{produit.image}}"
+               class="card-img-top" alt="Paint" />
           <div class="card-body">
             <div class="d-flex justify-content-between">
-              <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-              <p class="small text-danger"><s>$1099</s></p>
+              <p class="small"><a href="#!" class="text-muted">{{produit.name}}</a></p>
+              <p class="small text-danger"><s>{{produit.price}}</s></p>
             </div>
 
             <div class="d-flex justify-content-between mb-3">
-              <h5 class="mb-0">HP Notebook</h5>
-              <h5 class="text-dark mb-0">$999</h5>
+              <h5 class="mb-0">{{produit.name}}</h5>
+              <h5 class="text-dark mb-0">{{produit.price}}</h5>
             </div>
 
             <div class="d-flex justify-content-between mb-2">
-              <p class="text-muted mb-0">Available: <span class="fw-bold">6</span></p>
+              <h5 class="mb-0">{{produit.description}}</h5>
+
+              <p class="text-muted mb-0">Available: <span class="fw-bold">{{produit.Available}}</span></p>
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row" *ngIf="authService.hasRole('USER')">
               <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
                 To WashList
               </button>
               <button type="button" class="btn btn-danger flex-fill me-1">Buy now</button>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-        <div class="card">
-          <div class="d-flex justify-content-between p-3">
-            <p class="lead mb-0">Today's Combo Offer</p>
-            <div
-              class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-              style="width: 35px; height: 35px;">
-              <p class="text-white mb-0 small">x2</p>
-            </div>
-          </div>
-          <img src="assets/img/itachiopp.png"
-               class="card-img-top" alt="Laptop" />
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-              <p class="small text-danger"><s>$1199</s></p>
-            </div>
-
-            <div class="d-flex justify-content-between mb-3">
-              <h5 class="mb-0">HP Envy</h5>
-              <h5 class="text-dark mb-0">$1099</h5>
-            </div>
-
-            <div class="d-flex justify-content-between mb-2">
-              <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
-            </div>
-            <div class="d-flex flex-row">
-              <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
-                To WashList
-              </button>
-              <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-        <div class="card">
-          <div class="d-flex justify-content-between p-3">
-            <p class="lead mb-0">Today's Combo Offer</p>
-            <div
-              class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-              style="width: 35px; height: 35px;">
-              <p class="text-white mb-0 small">x2</p>
-            </div>
-          </div>
-          <img src="assets/img/Akatsuki_250x250@2x.png"
-               class="card-img-top" alt="Laptop" />
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-              <p class="small text-danger"><s>$1199</s></p>
-            </div>
-
-            <div class="d-flex justify-content-between mb-3">
-              <h5 class="mb-0">HP Envy</h5>
-              <h5 class="text-dark mb-0">$1099</h5>
-            </div>
-            <div class="d-flex justify-content-between mb-2">
-              <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
-            </div>
-            <div class="d-flex flex-row">
-              <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
-                To WashList
-              </button>
-              <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-        <div class="card">
-          <div class="d-flex justify-content-between p-3">
-            <p class="lead mb-0">Today's Combo Offer</p>
-            <div
-              class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-              style="width: 35px; height: 35px;">
-              <p class="text-white mb-0 small">x2</p>
-            </div>
-          </div>
-          <img src="assets/img/tanjiroanime.jpg"
-               class="card-img-top" alt="Laptop" />
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-              <p class="small text-danger"><s>$1199</s></p>
-            </div>
-
-            <div class="d-flex justify-content-between mb-3">
-              <h5 class="mb-0">HP Envy</h5>
-              <h5 class="text-dark mb-0">$1099</h5>
-            </div>
-
-            <div class="d-flex justify-content-between mb-2">
-              <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
-            </div>
-            <div class="d-flex flex-row">
-              <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
-                To WashList
-              </button>
-              <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-        <div class="card">
-          <div class="d-flex justify-content-between p-3">
-            <p class="lead mb-0">Today's Combo Offer</p>
-            <div
-              class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-              style="width: 35px; height: 35px;">
-              <p class="text-white mb-0 small">x2</p>
-            </div>
-          </div>
-          <img src="assets/img/085d6992a9be6ed879f0064cceafc2cb.jpg"
-               class="card-img-top" alt="Laptop" />
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-              <p class="small text-danger"><s>$1199</s></p>
-            </div>
-
-            <div class="d-flex justify-content-between mb-3">
-              <h5 class="mb-0">HP Envy</h5>
-              <h5 class="text-dark mb-0">$1099</h5>
-            </div>
-            <div class="d-flex justify-content-between mb-2">
-              <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
-            </div>
-            <div class="d-flex flex-row">
-              <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
-                To WashList
-              </button>
-              <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-        <div class="card">
-          <div class="d-flex justify-content-between p-3">
-            <p class="lead mb-0">Today's Combo Offer</p>
-            <div
-              class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-              style="width: 35px; height: 35px;">
-              <p class="text-white mb-0 small">x3</p>
-            </div>
-          </div>
-          <img src="assets/img/tanji.jpg"
-               class="card-img-top" alt="Gaming Laptop" />
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-              <p class="small text-danger"><s>$1399</s></p>
-            </div>
-            <div class="d-flex justify-content-between mb-3">
-              <h5 class="mb-0">Toshiba B77</h5>
-              <h5 class="text-dark mb-0">$1299</h5>
-            </div>
-            <div class="d-flex justify-content-between mb-2">
-              <p class="text-muted mb-0">Available: <span class="fw-bold">5</span></p>
-            </div>
-            <div class="d-flex flex-row">
-              <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
-                To WashList
-              </button>
-              <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
-            </div>
+            <button type="button" class="btn btn-danger flex-fill me-1" *ngIf="authService.hasRole('USER,ADMIN')" (click)="sendToEdit(produit)" routerLink="/admin/card" >Edit</button>
           </div>
         </div>
       </div>
@@ -212,4 +91,226 @@
   </div>
 </section>
 
-<p>admin-template works!</p>
+
+      <!-- <section style="background-color: #eee;">
+        <div class="container py-5">
+          <div class="row">
+            <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+              <div class="card">
+                <div class="d-flex justify-content-between p-3">
+                  <p class="lead mb-0">Today's Combo Offer</p>
+                  <div
+                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                    style="width: 35px; height: 35px;">
+                    <p class="text-white mb-0 small">x4</p>
+                  </div>
+                </div>
+                <img src="assets\img\kakashianime.png"
+                     class="card-img-top" alt="Laptop" />
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                    <p class="small text-danger"><s>$1099</s></p>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">HP Notebook</h5>
+                    <h5 class="text-dark mb-0">$999</h5>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="text-muted mb-0">Available: <span class="fw-bold">6</span></p>
+                  </div>
+                  <div class="d-flex flex-row" *ngIf="authService.hasRole('USER')">
+                    <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
+                      To WashList
+                    </button>
+                    <button type="button" class="btn btn-danger flex-fill me-1">Buy now</button>
+                  </div>
+                  <button type="button" class="btn btn-danger flex-fill me-1" *ngIf="authService.hasRole('USER,ADMIN')" routerLink="/admin/card" >Edit</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+              <div class="card">
+                <div class="d-flex justify-content-between p-3">
+                  <p class="lead mb-0">Today's Combo Offer</p>
+                  <div
+                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                    style="width: 35px; height: 35px;">
+                    <p class="text-white mb-0 small">x2</p>
+                  </div>
+                </div>
+                <img src="assets/img/itachiopp.png"
+                     class="card-img-top" alt="Laptop" />
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                    <p class="small text-danger"><s>$1199</s></p>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">HP Envy</h5>
+                    <h5 class="text-dark mb-0">$1099</h5>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
+                  </div>
+                  <div class="d-flex flex-row" *ngIf="authService.hasRole('USER')">
+                    <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
+                      To WashList
+                    </button>
+                    <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
+                  </div>
+                  <button type="button" class="btn btn-danger flex-fill me-1" *ngIf="authService.hasRole('USER,ADMIN')" routerLink="/admin/card" >Edit</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+              <div class="card">
+                <div class="d-flex justify-content-between p-3">
+                  <p class="lead mb-0">Today's Combo Offer</p>
+                  <div
+                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                    style="width: 35px; height: 35px;">
+                    <p class="text-white mb-0 small">x2</p>
+                  </div>
+                </div>
+                <img src="assets/img/Akatsuki_250x250@2x.png"
+                     class="card-img-top" alt="Laptop" />
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                    <p class="small text-danger"><s>$1199</s></p>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">HP Envy</h5>
+                    <h5 class="text-dark mb-0">$1099</h5>
+                  </div>
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
+                  </div>
+                  <div class="d-flex flex-row" *ngIf="authService.hasRole('USER')">
+                    <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
+                      To WashList
+                    </button>
+                    <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
+                  </div>
+                  <button type="button" class="btn btn-danger flex-fill me-1" *ngIf="authService.hasRole('USER,ADMIN')" routerLink="/admin/card" >Edit</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+              <div class="card">
+                <div class="d-flex justify-content-between p-3">
+                  <p class="lead mb-0">Today's Combo Offer</p>
+                  <div
+                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                    style="width: 35px; height: 35px;">
+                    <p class="text-white mb-0 small">x2</p>
+                  </div>
+                </div>
+                <img src="assets/img/tanjiroanime.jpg"
+                     class="card-img-top" alt="Laptop" />
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                    <p class="small text-danger"><s>$1199</s></p>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">HP Envy</h5>
+                    <h5 class="text-dark mb-0">$1099</h5>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
+                  </div>
+                  <div class="d-flex flex-row" *ngIf="authService.hasRole('USER')">
+                    <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
+                      To WashList
+                    </button>
+                    <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
+                  </div>
+                  <button type="button" class="btn btn-danger flex-fill me-1" *ngIf="authService.hasRole('USER,ADMIN')" routerLink="/admin/card" >Edit</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+              <div class="card">
+                <div class="d-flex justify-content-between p-3">
+                  <p class="lead mb-0">Today's Combo Offer</p>
+                  <div
+                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                    style="width: 35px; height: 35px;">
+                    <p class="text-white mb-0 small">x2</p>
+                  </div>
+                </div>
+                <img src="assets/img/085d6992a9be6ed879f0064cceafc2cb.jpg"
+                     class="card-img-top" alt="Laptop" />
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                    <p class="small text-danger"><s>$1199</s></p>
+                  </div>
+
+                  <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">HP Envy</h5>
+                    <h5 class="text-dark mb-0">$1099</h5>
+                  </div>
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
+                  </div>
+                  <div class="d-flex flex-row" *ngIf="authService.hasRole('USER')">
+                    <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
+                      To WashList
+                    </button>
+                    <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
+                  </div>
+                  <button type="button" class="btn btn-danger flex-fill me-1" *ngIf="authService.hasRole('USER,ADMIN')" routerLink="/admin/card" >Edit</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+              <div class="card">
+                <div class="d-flex justify-content-between p-3">
+                  <p class="lead mb-0">Today's Combo Offer</p>
+                  <div
+                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                    style="width: 35px; height: 35px;">
+                    <p class="text-white mb-0 small">x3</p>
+                  </div>
+                </div>
+                <img src="assets/img/tanji.jpg"
+                     class="card-img-top" alt="Gaming Laptop" />
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
+                    <p class="small text-danger"><s>$1399</s></p>
+                  </div>
+                  <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">Toshiba B77</h5>
+                    <h5 class="text-dark mb-0">$1299</h5>
+                  </div>
+                  <div class="d-flex justify-content-between mb-2">
+                    <p class="text-muted mb-0">Available: <span class="fw-bold">5</span></p>
+                  </div>
+                  <div class="d-flex flex-row" *ngIf="authService.hasRole('USER')">
+                    <button type="button" class="btn btn-primary flex-fill me-1" data-mdb-ripple-color="dark">
+                      To WashList
+                    </button>
+                    <button type="button" class="btn btn-danger flex-fill ms-1">Buy now</button>
+                  </div>
+                  <button type="button" class="btn btn-danger flex-fill me-1" *ngIf="authService.hasRole('USER,ADMIN')" routerLink="/admin/card" >Edit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      -->
+
+
+

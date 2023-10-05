@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminTemplateComponent } from './components/admin-template/admin-template.component';
 import { AdminProductImageComponent } from './components/admin-product-image/admin-product-image.component';
 import {NgOptimizedImage} from "@angular/common";
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {NgOptimizedImage} from "@angular/common";
     CustomersComponent,
     LoginComponent,
     AdminTemplateComponent,
-    AdminProductImageComponent
+    AdminProductImageComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

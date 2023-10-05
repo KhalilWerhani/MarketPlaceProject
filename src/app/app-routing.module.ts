@@ -6,15 +6,20 @@ import {LoginComponent} from "./components/login/login.component";
 import {AdminTemplateComponent} from "./components/admin-template/admin-template.component";
 import {AuthenticationGuard} from "./guards/authentication.guard";
 import {AdminProductImageComponent} from "./components/admin-product-image/admin-product-image.component";
+import {CardComponent} from "./components/card/card.component";
 
 const routes: Routes = [
   {path:"image",component:AdminProductImageComponent},
   {path : "login" , component : LoginComponent} ,
+  {path : "card" , component : CardComponent} ,
+
   {path : "" , component : LoginComponent},
   {path : "admin" , component : AdminTemplateComponent ,canActivate:[AuthenticationGuard], children : [
       {path : "products" ,  component : ProductsComponent},
       {path : "customers" , component : CustomersComponent},
       {path:"image",component:AdminProductImageComponent},
+      {path : "card" , component : CardComponent} ,
+
 
     ]},
 

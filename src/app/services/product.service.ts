@@ -7,19 +7,22 @@ import {Product} from "../model/product.model";
 })
 export class ProductService {
 
-  private products! : Array<Product>;
+  public products! : Array<Product>;
   constructor() {
     this.products=[
-      {id:1 , name : "Computer" , price : 6500, promotion:true},
-      {id:2 , name : "Printer" , price : 1200 , promotion:true},
-      {id:3 , name : "Smart phone" , price : 1400, promotion:false},
+      {id:1 , name : "Computer" , price : 6500, promotion:true,image:"assets/img/tanji.jpg",description:"Anime Picture",Available:10},
+      {id:1 , name : "Computer" , price : 6500, promotion:true,image:"assets/img/tanji.jpg",description:"Anime Picture",Available:10},
+      {id:1 , name : "Computer" , price : 6500, promotion:true,image:"assets/img/tanji.jpg",description:"Anime Picture",Available:10},
 
     ];
     for(let i=0; i<10 ; i++) {
-      this.products.push({id:1 , name : "Computer" , price : 6500, promotion:true});
-      this.products.push({id:2 , name : "Printer" , price : 1200 , promotion:true});
-      this.products.push({id:3 , name : "Smart phone" , price : 1400, promotion:false});   }
- }
+      this.products.push({id: 1, name: "Computer", price: 6500, promotion: true, image: "assets/img/tanji.jpg",description:"Anime Picture",Available:10},
+      );
+      this.products.push({id: 1, name: "Computer", price: 6500, promotion: true, image: "assets/img/tanji.jpg",description:"Anime Picture",Available:10},
+      );
+      this.products.push({id: 1, name: "Computer", price: 6500, promotion: true, image: "assets/img/tanji.jpg",description:"Anime Picture",Available:10},
+      );
+    } }
   public getAllProducts() : Observable <Product[]>{
     let rnd=Math.random();
     if(rnd<0.1) return throwError(()=>new Error("Internet connexion error"));

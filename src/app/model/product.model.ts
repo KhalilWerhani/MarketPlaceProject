@@ -3,4 +3,7 @@ export interface Product {
   name : string ;
   price : number ;
   promotion : boolean ;
+  image :string;
+  description:string;
+  Available:number;
 }
