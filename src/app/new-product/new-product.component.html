@@ -1,0 +1,32 @@
+
+<div class="container mt-3 md-6 offset-md-3">
+    <form [formGroup]="productFormGroup" (ngSubmit)="handleAddProduct()">
+        <div>
+            <label class="form-label">Image</label>
+            <input type="file" id="avatar" name="avatar" formControlName="image" class="form-control" accept="image/png, image/jpg" required/>
+
+            <input type="image"  formControlName="image" class="form-control" required/>
+        </div>
+        <div>
+            <label class="form-label">Name</label>
+            <input type="text" formControlName="name" class="form-control"required>
+        </div>
+        <div>
+            <label class="form-label">Price</label>
+            <input type="number" formControlName="price" class="form-control" required>
+        </div>
+        <div>
+            <label class="form-label">Promotion</label>
+            <input type="checkbox" formControlName="promotion" class="form-check-input" >
+        </div>
+        <div>
+            <label class="form-label">Available</label>
+            <input type="number" formControlName="Available" class="form-control" required>
+        </div>
+        <div>
+            <label class="form-label">Description</label>
+            <input type="text" formControlName="description" class="form-control" required>
+        </div><!-- [disabled]="productFormGroup.invalid"-->
+        <button [disabled]="productFormGroup.invalid" class="btn btn-info" type="submit">Save</button>
+    </form>
+</div>
