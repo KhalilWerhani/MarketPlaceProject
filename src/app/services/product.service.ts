@@ -44,4 +44,8 @@ export class ProductService {
     let products =this.products.filter(p=>p.name.includes(keyword));
     return of(products);
 }
+public addNewProdct(product : Product):Observable<Product>{
+    this.products.push(product);
+    return of(product);
+}
 }

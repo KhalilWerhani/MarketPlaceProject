@@ -11,6 +11,8 @@ import { AdminTemplateComponent } from './components/admin-template/admin-templa
 import { AdminProductImageComponent } from './components/admin-product-image/admin-product-image.component';
 import {NgOptimizedImage} from "@angular/common";
 import { CardComponent } from './components/card/card.component';
+import {EditproductComponent} from "./editproduct/editproduct.component";
+import {NewProductComponent} from "./new-product/new-product.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { CardComponent } from './components/card/card.component';
     AdminTemplateComponent,
     AdminProductImageComponent,
     CardComponent,
+    EditproductComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,
