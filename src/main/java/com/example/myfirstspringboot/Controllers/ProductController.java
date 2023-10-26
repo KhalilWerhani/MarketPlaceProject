@@ -17,7 +17,9 @@ public class ProductController {
 
 
     @PostMapping("/add")
-    public void add(@ModelAttribute Product p){
+    @ResponseBody
+    public void add(@RequestBody Product p){
+        System.out.println(p.getName());
         productService.addProduct(p);
     }
 
