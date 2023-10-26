@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProductService} from "../services/product.service";
 import {Product} from "../model/product.model";
+import {ProductServiceNew} from "../services/ProductServiceNew";
 
 @Component({
   selector: 'app-new-product',
@@ -11,7 +12,7 @@ import {Product} from "../model/product.model";
 export class NewProductComponent implements OnInit {
   productFormGroup!:FormGroup;
 
-  constructor(private fb :FormBuilder , private prodService:ProductService) {
+  constructor(private fb :FormBuilder , private productServiceNew:ProductServiceNew) {
 
   }
   ngOnInit():void {
@@ -20,24 +21,15 @@ export class NewProductComponent implements OnInit {
       name:this.fb.control(null,[Validators.required , Validators.minLength(4)]),
       price:this.fb.control(null,[Validators.required ]),
       promotion:this.fb.control(null,),
-      Available:this.fb.control(null,[Validators.required ,Validators.minLength(1)]),
+      available:this.fb.control(null,[Validators.required ,Validators.minLength(1)]),
       description:this.fb.control(null,[Validators.required , Validators.minLength(4)]),
     })
   }
 
   handleAddProduct() {
-
-
     let product=this.productFormGroup.value;
-    this.prodService.addNewProdct(product).subscribe({
-      next:(data:Product)=>{
-        alert("Products added successfully")
-        this.productFormGroup.reset();
-      }, error : err => {
-        console.log(err);
-      }
-    })
-
-    // console.log(this.productFormGroup.value);
+    product.promotion=false;
+    product.id=null;
+    this.productServiceNew.addProduct(product);
   }
 }

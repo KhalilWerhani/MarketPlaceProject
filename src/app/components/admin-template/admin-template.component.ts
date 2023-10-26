@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthentificationService} from "../../services/authentification.service";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
+import {ProfileComponent} from "../profile/profile.component";
 
 @Component({
   selector: 'app-admin-template',
@@ -38,5 +39,13 @@ export class AdminTemplateComponent implements OnInit{
         this.route.navigateByUrl("/login");
       }
     })
+  }
+
+    protected readonly ProfileComponent = ProfileComponent;
+
+  Profile() {
+    this.route.navigateByUrl("/admin/profile");
+
+
   }
 }

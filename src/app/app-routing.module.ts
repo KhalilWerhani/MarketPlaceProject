@@ -7,6 +7,9 @@ import {AdminTemplateComponent} from "./components/admin-template/admin-template
 import {AuthenticationGuard} from "./guards/authentication.guard";
 import {AdminProductImageComponent} from "./components/admin-product-image/admin-product-image.component";
 import {CardComponent} from "./components/card/card.component";
+import {NewProductComponent} from "./new-product/new-product.component";
+import {EditproductComponent} from "./editproduct/editproduct.component";
+import {ProfileComponent} from "./components/profile/profile.component";
 
 const routes: Routes = [
   {path:"image",component:AdminProductImageComponent},
@@ -19,6 +22,11 @@ const routes: Routes = [
       {path : "customers" , component : CustomersComponent},
       {path:"image",component:AdminProductImageComponent},
       {path : "card" , component : CardComponent} ,
+      {path : "newproduct" , component : NewProductComponent} ,
+      {path : "editproduct/:id" , component : EditproductComponent} ,
+      {path : "profile" , component : ProfileComponent} ,
+
+
 
 
     ]},

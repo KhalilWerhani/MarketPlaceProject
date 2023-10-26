@@ -13,6 +13,8 @@ import {NgOptimizedImage} from "@angular/common";
 import { CardComponent } from './components/card/card.component';
 import {EditproductComponent} from "./editproduct/editproduct.component";
 import {NewProductComponent} from "./new-product/new-product.component";
+import {HttpClientModule} from "@angular/common/http";
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,16 @@ import {NewProductComponent} from "./new-product/new-product.component";
     AdminProductImageComponent,
     CardComponent,
     EditproductComponent,
-    NewProductComponent
+    NewProductComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

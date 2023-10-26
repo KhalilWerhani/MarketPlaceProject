@@ -2,7 +2,7 @@
   <ng-template #errors>
     <div class="text-danger"> {{errorMessage}}</div>
   </ng-template>
-  <div class="card" *ngIf="products;" else errors>
+  <div class="card" *ngIf="product;" else errors>
     <div class="card-header"> Products List  </div>
     <div class="card-body">
       <form [formGroup] ="searchFormGroup" (ngSubmit)="handleSearchProducts()">
@@ -20,7 +20,7 @@
          </tr>
          </thead>
          <tbody>
-         <tr *ngFor="let p of products">
+         <tr *ngFor="let p of product">
            <td>{{p.id}} </td>
            <td>{{p.name}} </td>
            <td>{{p.price}} </td>
@@ -36,6 +36,12 @@
            <td *ngIf="authService.hasRole('USER,ADMIN')">
              <button (click)="handleDeleteProduct(p)"  class="btn btn-danger">
                <i class="bi bi-trash"></i>
+             </button>
+           </td>
+
+           <td *ngIf="authService.hasRole('USER,ADMIN')">
+             <button (click)="handleEditProduct(p)"  class="btn btn-dark">
+               <i class="bi bi-file"></i>
              </button>
            </td>
          </tr>

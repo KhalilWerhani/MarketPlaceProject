@@ -1,32 +1,16 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Observable, of, throwError} from "rxjs";
 import {Product} from "../model/product.model";
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductService implements OnInit{
 
   public products! : Array<Product>;
   constructor() {
-    this.products=[
-      {id:1 , name : "Computer" , price : 6500, promotion:true,image:"assets/img/tanji.jpg",description:"Anime Picture",Available:10},
-      {id:1 , name : "Computer" , price : 6500, promotion:true,image:"assets/img/tanji.jpg",description:"Anime Picture",Available:10},
-      {id:1 , name : "Computer" , price : 6500, promotion:true,image:"assets/img/tanji.jpg",description:"Anime Picture",Available:10},
 
-    ];
-    for(let i=0; i<10 ; i++) {
-      this.products.push({id: 1, name: "Computer", price: 6500, promotion: true, image: "assets/img/tanji.jpg",description:"Anime Picture",Available:10},
-      );
-      this.products.push({id: 1, name: "Computer", price: 6500, promotion: true, image: "assets/img/tanji.jpg",description:"Anime Picture",Available:10},
-      );
-      this.products.push({id: 1, name: "Computer", price: 6500, promotion: true, image: "assets/img/tanji.jpg",description:"Anime Picture",Available:10},
-      );
-    } }
-  public getAllProducts() : Observable <Product[]>{
-    let rnd=Math.random();
-    if(rnd<0.1) return throwError(()=>new Error("Internet connexion error"));
-    else return of([...this.products]);
   }
   public deleteProduct(id : number) : Observable<boolean> {
    this.products=this.products.filter(p=>p.id!=id);
@@ -48,4 +32,7 @@ public addNewProdct(product : Product):Observable<Product>{
     this.products.push(product);
     return of(product);
 }
+
+  ngOnInit(): void {
+  }
 }

@@ -4,6 +4,8 @@ import {Product} from "../../model/product.model";
 import {Form, FormBuilder, FormGroup} from "@angular/forms";
 import Swal from 'sweetalert2';
 import {AuthentificationService} from "../../services/authentification.service";
+import {ProductServiceNew} from "../../services/ProductServiceNew";
+import {Router} from "@angular/router";
 
 // CommonJS
 
@@ -13,30 +15,29 @@ import {AuthentificationService} from "../../services/authentification.service";
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit{
+  product!:Array<Product>;
   products! : Array<Product>;
   errorMessage! : string ;
   searchFormGroup! : FormGroup;
-constructor(private productService : ProductService , private fb : FormBuilder ,
-            public authService : AuthentificationService
+constructor(private productService : ProductService ,private productServiceNew : ProductServiceNew ,private fb : FormBuilder ,
+            public authService : AuthentificationService , private router : Router ,
             ) { }
 
   ngOnInit(): void {
-  this.searchFormGroup=this.fb.group( {keyword : this.fb.control(null)});
-
-    this.handleGetAllProducts()
-  }
-  handleGetAllProducts() {
-    this.productService.getAllProducts().subscribe({next: (data)=>{
-        this.products=data ;
+    this.productServiceNew.getProducts().subscribe({
+      next:(data) =>{
+        this.product=data;
+        console.log(data)
       },
       error : (err)=> {
         this.errorMessage=err;
       }
+    })
+  this.searchFormGroup=this.fb.group( {keyword : this.fb.control(null)});
 
-    });
-  }
+}
 
-  handleDeleteProduct(p: any) {
+  handleDeleteProduct(p: Product) {
 
  let conf=   Swal.fire({
    title: 'Are you sure?',
@@ -48,40 +49,29 @@ constructor(private productService : ProductService , private fb : FormBuilder ,
    confirmButtonText: 'Yes, delete it!'
  }).then((result) => {
    if (result.isConfirmed) {
+    this.productServiceNew.deleteProduct(p);
+    this.product=this.product.filter(stay=>stay.id!=p.id);
      Swal.fire(
        'Deleted!',
        'Your file has been deleted.',
        'success'
-
      )
-     this.productService.deleteProduct(p.id).subscribe( {
-       next : (data )=>{
-         //this.handleGetAllProducts();
-         let index=this.products.indexOf(p);
-         this.products.splice(index,1);
-         //yass
-
-       }
-     });
    }
  })                                                                 //confirm("Are you sure?");
    // if (!conf) return ;
 
   }
 
+  handleEditProduct(p:Product) {
+
+    this.router.navigateByUrl('/admin/editproduct/'+p.id);
+
+  }
+
     handleSetPromotion(p: Product) {
-  let promo=p.promotion;
-      this.productService.setPromotion(p.id).subscribe( {
-          next :( data  )=>{
-            p.promotion=!promo ;
-        },
-          error : err => {
-            this.errorMessage=err ;
-          }
-      })
-
+      p.promotion=!p.promotion;
+      this.productServiceNew.updatePromotion(p.id);
     }
-
   handleSearchProducts() {
     let keyword=this.searchFormGroup.value.keyword;
     this.productService.seachProducts(keyword).subscribe( {
