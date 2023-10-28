@@ -80,4 +80,14 @@ constructor(private productService : ProductService ,private productServiceNew :
       }
     })
   }
+
+  handleSearchProduct() {
+    let keyword=this.searchFormGroup.value.keyword;
+    this.productServiceNew.seachProducts(keyword).subscribe( {
+      next :(data)=> {
+        this.products=data;
+      }
+    })
+  }
+
 }

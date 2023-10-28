@@ -10,9 +10,9 @@ export class AuthentificationService {
     users : AppUser[]=[];
     authenticatedUser:AppUser | undefined;
   constructor() {
-    this.users.push({ userId:"1",username: "user1",email:"khalil1999werhanov@hotmail.com",password:"12345",roles:["USER"]});
-        this.users.push({ userId:"2",username: "user2",email:"khalil1999werhanov@hotmail.com",password:"12345",roles:["USER"]});
-      this.users.push({ userId:"999",username: "admin",email:"khalil1999werhanov@hotmail.com",password:"12345",roles:["USER,ADMIN"]});
+    this.users.push({ userId:"1",image:"papa.png",username: "user1",email:"khalil1999werhanov@hotmail.com",password:"12345",phone:28552642,location:"tunis",roles:["USER"]});
+        this.users.push({ userId:"2",image:"papa.png",username: "user2",email:"khalil1999werhanov@hotmail.com",password:"12345",phone:28552642,location:"tunis",roles:["USER"]});
+      this.users.push({ userId:"999",image:"papa.png",username: "admin",email:"khalil1999werhanov@hotmail.com",password:"12345",phone:28552642,location:"tunis",roles:["USER,ADMIN"]});
 
   };
     public login(username:string,password:string):Observable<AppUser> {

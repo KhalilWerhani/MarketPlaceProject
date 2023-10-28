@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CustomersComponent } from './components/customers/customers.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
 import { AdminTemplateComponent } from './components/admin-template/admin-template.component';
 import { AdminProductImageComponent } from './components/admin-product-image/admin-product-image.component';
@@ -15,6 +15,8 @@ import {EditproductComponent} from "./editproduct/editproduct.component";
 import {NewProductComponent} from "./new-product/new-product.component";
 import {HttpClientModule} from "@angular/common/http";
 import { ProfileComponent } from './components/profile/profile.component';
+import { SignupComponent } from './signup/signup.component';
+import { EdituserComponent } from './components/edituser/edituser.component';
 
 @NgModule({
   declarations: [
@@ -27,16 +29,19 @@ import { ProfileComponent } from './components/profile/profile.component';
     CardComponent,
     EditproductComponent,
     NewProductComponent,
-    ProfileComponent
+    ProfileComponent,
+    SignupComponent,
+    EdituserComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    NgOptimizedImage,
-    HttpClientModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        NgOptimizedImage,
+        HttpClientModule,
+        FormsModule,
 
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

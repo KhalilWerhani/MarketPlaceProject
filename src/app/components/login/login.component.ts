@@ -62,4 +62,8 @@ errorMessage :any ;
           }
       })
   }
+
+  handlesignup() {
+    this.router.navigateByUrl('/signup');
+  }
 }

@@ -5,18 +5,19 @@
   <div class="card" *ngIf="product;" else errors>
     <div class="card-header"> Products List  </div>
     <div class="card-body">
-      <form [formGroup] ="searchFormGroup" (ngSubmit)="handleSearchProducts()">
+      <form [formGroup] ="searchFormGroup" (ngSubmit)="handleSearchProduct()">
         <div class="input-group">
           <label class="input-group-text">Search : </label>
           <input type="text" class="form-control" formControlName="keyword"/>
           <button class="btn btn-info"></button>
           <i class="bi bi-search"></i>
         </div>
+
       </form>
-       <table class="table" >
+       <table class="table" border="2px" >
          <thead>
          <tr>
-           <th>ID</th> <th>Name</th> <th>Price</th>
+           <th>ID</th> <th>Name</th> <th>Price</th> <th>Promotion</th> <th *ngIf="authService.hasRole('USER,ADMIN')">                        </th> <th>Availablity</th> <th>Description</th>
          </tr>
          </thead>
          <tbody>
@@ -32,6 +33,10 @@
               <span *ngIf="!p.promotion">PromoOn</span>
             </button>
            </td>
+           <td>{{p.available}} </td>
+
+           <td>{{p.description}} </td>
+
 
            <td *ngIf="authService.hasRole('USER,ADMIN')">
              <button (click)="handleDeleteProduct(p)"  class="btn btn-danger">
@@ -41,7 +46,7 @@
 
            <td *ngIf="authService.hasRole('USER,ADMIN')">
              <button (click)="handleEditProduct(p)"  class="btn btn-dark">
-               <i class="bi bi-file"></i>
+               <i class="bi bi-pencil-square"></i>
              </button>
            </td>
          </tr>

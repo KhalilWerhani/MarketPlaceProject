@@ -10,11 +10,15 @@ import {CardComponent} from "./components/card/card.component";
 import {NewProductComponent} from "./new-product/new-product.component";
 import {EditproductComponent} from "./editproduct/editproduct.component";
 import {ProfileComponent} from "./components/profile/profile.component";
+import {SignupComponent} from "./signup/signup.component";
+import {EdituserComponent} from "./components/edituser/edituser.component";
 
 const routes: Routes = [
   {path:"image",component:AdminProductImageComponent},
   {path : "login" , component : LoginComponent} ,
   {path : "card" , component : CardComponent} ,
+  {path : "signup" , component : SignupComponent},
+
 
   {path : "" , component : LoginComponent},
   {path : "admin" , component : AdminTemplateComponent ,canActivate:[AuthenticationGuard], children : [
@@ -24,6 +28,7 @@ const routes: Routes = [
       {path : "card" , component : CardComponent} ,
       {path : "newproduct" , component : NewProductComponent} ,
       {path : "editproduct/:id" , component : EditproductComponent} ,
+      {path : "edituser/:id" , component : EdituserComponent} ,
       {path : "profile" , component : ProfileComponent} ,
 
 

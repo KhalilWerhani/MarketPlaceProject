@@ -1,1 +1,51 @@
-<p>customers works!</p>
+<div class="container">
+  <ng-template #errors>
+    <div class="text-danger"> {{errorMessage}}</div>
+  </ng-template>
+  <div class="card" *ngIf="user;" else errors>
+    <div class="card-header"> Users List  </div>
+    <div class="card-body">
+      <form [formGroup] ="searchFormGroup" (ngSubmit)="handleSearchProduct()">
+        <div class="input-group">
+          <label class="input-group-text">Search : </label>
+          <input type="text" class="form-control" formControlName="keyword"/>
+          <button class="btn btn-info"></button>
+          <i class="bi bi-search"></i>
+        </div>
+
+      </form>
+      <table class="table" border="2px" >
+        <thead>
+        <tr>
+          <th>UserID</th> <th>Image</th> <th>Username</th> <th>Email</th> <th *ngIf="authService.hasRole('USER,ADMIN')">Password</th> <th>Phone</th> <th>Location </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let u of user">
+          <td>{{u.userId}} </td>
+          <td>{{u.image}} </td>
+          <td>{{u.username}} </td>
+          <td>{{u.email}} </td>
+          <td *ngIf="authService.hasRole('USER,ADMIN')">{{u.password}} </td>
+          <td>{{u.phone}} </td>
+          <td>{{u.location}} </td>
+
+
+          <td *ngIf="authService.hasRole('USER,ADMIN')">
+            <button (click)="handleDeleteUser(u)"  class="btn btn-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+
+
+          <td *ngIf="authService.hasRole('USER,ADMIN')">
+            <button (click)="handleEditUser(u)"  class="btn btn-dark">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
