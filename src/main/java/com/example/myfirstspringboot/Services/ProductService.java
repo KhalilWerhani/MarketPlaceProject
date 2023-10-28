@@ -45,6 +45,10 @@ public class ProductService implements ProductServiceI{
         return productRepo.findAll();
     }
 
+  //  public List<Product> getNameProduct(String name , Long id) {
+   //     return productRepo.findAllById(); }
+
+
     @Override
     public void updatePromo(Long id) {
         var p= productRepo.findById(id).get();
