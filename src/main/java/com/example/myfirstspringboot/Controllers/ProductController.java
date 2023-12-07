@@ -2,6 +2,7 @@ package com.example.myfirstspringboot.Controllers;
 
 
 import com.example.myfirstspringboot.Entites.Product;
+import com.example.myfirstspringboot.Services.CloudinaryService;
 import com.example.myfirstspringboot.Services.ProductServiceI;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ public class ProductController {
     @ResponseBody
     public void add(@RequestBody Product p){
         System.out.println(p.getName());
+
         productService.addProduct(p);
     }
 
