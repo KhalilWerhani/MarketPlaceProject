@@ -24,7 +24,8 @@ export class AdminProductImageComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.productServiceNew.getProducts().subscribe({
+    this.productServiceNew.getProducts().subscribe(
+      {
       next: (data) => {
         this.product = data;
         console.log(data)

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { EdituserComponent } from './components/edituser/edituser.component';
+import {CloudinaryModule, CloudinaryConfiguration} from "@cloudinary/angular-5.x";
+
+import { Cloudinary } from 'cloudinary-core';
+import {ImageComponent} from "./components/image/image.component";
+import {MatInputModule} from "@angular/material/input";
+import {MaterialFileInputModule} from "ngx-mat-file-input";
+import {MatFormFieldModule} from "@angular/material/form-field";
+
+
 
 @NgModule({
   declarations: [
@@ -31,18 +40,36 @@ import { EdituserComponent } from './components/edituser/edituser.component';
     NewProductComponent,
     ProfileComponent,
     SignupComponent,
-    EdituserComponent
+    EdituserComponent,
+    ImageComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        NgOptimizedImage,
-        HttpClientModule,
-        FormsModule,
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    HttpClientModule,
+    FormsModule,
 
-    ],
+
+
+    //CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dtrngrnbh' } as CloudinaryConfiguration),
+
+
+  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  // constructor(private cloudinary: Cloudinary) {
+  //   const clConfig: CloudinaryConfiguration = {
+  //     cloud_name: 'dtrngrnbh',
+  //     api_key: '423337956949437',
+  //     api_secret: 'ZNUVucBGGvdivmRfz8ZzXFIEFh8',
+  //   };
+  //   // @ts-ignore
+  //   cloudinary.config(clConfig);
+  // }
+
+}
